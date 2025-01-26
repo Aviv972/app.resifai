@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  .sidebar {
+    right: 0;
+    left: auto;
+  }
+
+  /* Update sidebar inset positioning */
+  .sidebar-inset > div {
+    margin-inline-start: 280px;
+    margin-inline-end: 0;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+      margin-inline-start: 0;
+    }
+  }
+
+  .sidebar-content {
+    direction: rtl;
+  }
+
+  .sidebar-trigger {
+    right: auto;
+    left: 0;
+  }
+
+  /* RTL Support for Select Components */
+  .select-trigger {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    text-align: right;
+    padding-right: 0.75rem;
+    padding-left: 2rem;
+  }
+
+  .select-trigger-icon {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+  }
+
+  .select-content {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .select-content[data-state="open"] {
+    text-align: right;
+    direction: rtl;
+  }
+
+  .select-item {
+    text-align: right;
+    direction: rtl;
+    padding: 8px 12px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .select-trigger {
+    text-align: right;
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+
+  .select-value {
+    text-align: right !important;
+  }
+
+  .select-content {
+    text-align: right !important;
+  }
+
+  .select-item {
+    text-align: right !important;
+    padding-right: 8px !important;
+  }
+
+  .select-trigger {
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    text-align: right !important;
+  }
+
+  [role="listbox"] {
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Fix chevron position in select */
+  .select-trigger [data-icon] {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* Fix chevron position in select */
+  .select-trigger .chevron-down {
+    right: auto;
+    left: 0.75rem;
+  }
+
+  /* Main content positioning */
+  /* Improved Table RTL Support */
+  table {
+    direction: rtl;
+  }
+
+  th,
+  td {
+    text-align: right;
+  }
+
+  textarea,
+  input {
+    text-align: right;
+    direction: rtl;
+  }
+
+  .timeline-entry {
+    flex-direction: row-reverse;
+  }
+
+  /* Fix select trigger text alignment */
+  .select-trigger .select-value {
+    text-align: right;
+    width: 100%;
+  }
+
+  .select-trigger [data-value] {
+    text-align: right;
+    width: 100%;
+  }
+
+  /* Ensure placeholder text is also right-aligned */
+  .select-trigger [data-placeholder] {
+    text-align: right;
+    width: 100%;
+  }
+}
+
+/* Smooth Transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Improved Mobile Support */
+@media (max-width: 640px) {
+  .container {
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
